@@ -1,0 +1,61 @@
+html, body, main {
+    /* box-sizing: border-box; */
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+}
+
+main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#calculator {
+    border: black 1px solid;
+    width:100%;
+    max-width: 450px;
+    max-height: 600px;
+    display:flex;
+    flex-direction: column;
+}
+
+#calculatorScreen {
+    border: red 1px solid;
+    height: 100px;
+}
+
+#buttonContainer {
+    border: orange 1px solid;
+    flex:1;
+}
+
+#topButtons {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+    background-color: lightgrey;
+    border: 1px solid blue;
+}
+
+#clearButton, #deleteButton {
+    border: 2px black solid;
+    padding: 15px;
+}
+
+#lowerButtons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content :space-evenly;
+    border: 1px pink solid;
+    padding: 8px;
+}
+
+.button {
+    box-sizing: border-box;
+    width: 80px;
+    border: 2px solid black;
+    text-align: center;
+    padding: 20px;
+}
