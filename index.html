@@ -4,36 +4,39 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="/calculator.js"></script>
+    <script src="/calculator.js" defer></script>
     <link  rel="stylesheet" href="styles.css">
     <title>Document</title>
 </head>
 <body>
 <main> 
 <div id="calculator">
-    <div id="calculatorScreen">5464663</div>
+    <div id="calculatorScreen">
+        <div id="lastOperation"></div>
+        <div id="currentOperation">0</div>
+    </div>
     <div id="buttonContainer">
         <div id="topButtons">
             <div id="clearButton">Clear</div>
             <div id="deleteButton">Delete</div>
         </div>
         <div id="lowerButtons">
-            <div id="7" class="button">7</div>
-            <div id="8" class="button">8</div>
-            <div id="9" class="button">9</div>
-            <div id="÷" class="button">÷</div>
-            <div id="4" class="button">4</div>
-            <div id="5" class="button">5</div>
-            <div id="6" class="button">6</div>
-            <div id="*" class="button">x</div>
-            <div id="1" class="button">1</div>
-            <div id="2" class="button">2</div>
-            <div id="3" class="button">3</div>
-            <div id="-" class="button">-</div>
-            <div id="." class="button">.</div>
-            <div id="0" class="button">0</div>
-            <div id="=" class="button">=</div>
-            <div id="+" class="button">+</div>
+            <div id="7" class="button number">7</div>
+            <div id="8" class="button number">8</div>
+            <div id="9" class="button number">9</div>
+            <div id="÷" class="button operator">÷</div>
+            <div id="4" class="button number">4</div>
+            <div id="5" class="button number">5</div>
+            <div id="6" class="button number">6</div>
+            <div id="*" class="button operator">x</div>
+            <div id="1" class="button number">1</div>
+            <div id="2" class="button number">2</div>
+            <div id="3" class="button number">3</div>
+            <div id="-" class="button operator">-</div>
+            <div id="." class="button point">.</div>
+            <div id="0" class="button number">0</div>
+            <div id="=" class="button equals">=</div>
+            <div id="+" class="button operator">+</div>
         </div>
     </div>
 </div>

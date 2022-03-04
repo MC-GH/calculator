@@ -23,6 +23,15 @@ main {
 #calculatorScreen {
     border: red 1px solid;
     height: 100px;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+
+#lastOperation, #currentOperation {
+    text-align:right;
+    margin-right: 20px;
 }
 
 #buttonContainer {
@@ -56,6 +65,7 @@ main {
     box-sizing: border-box;
     width: 80px;
     border: 2px solid black;
+    font-weight: 999;
     text-align: center;
     padding: 20px;
 }
