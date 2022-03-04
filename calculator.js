@@ -50,11 +50,15 @@ function assignOperator(e) {
       }
 
 function calculateFinalResult() {
-    secondNumber = currentOperationScreen.textContent;
-    let finalResult = operate(currentOperator, firstNumber, secondNumber);
-    currentOperationScreen.textContent = finalResult;
-    lastOperationScreen.textContent = parseInt(`${firstNumber}`) + ' ' + currentOperator + ' ' + parseInt(`${secondNumber}`);
-    // if (firstNumber === '') lastOperationScreen.textContent = 
+        if (lastOperationScreen.textContent === '') {
+        lastOperationScreen.textContent = currentOperationScreen.textContent;
+        console.log(firstNumber);
+        } else {
+        secondNumber = currentOperationScreen.textContent;
+        let finalResult = operate(currentOperator, firstNumber, secondNumber);
+        currentOperationScreen.textContent = finalResult;
+        lastOperationScreen.textContent = parseInt(`${firstNumber}`) + ' ' + currentOperator + ' ' + parseInt(`${secondNumber}`);
+    }
 }
 
 function removeZero() {
@@ -66,6 +70,7 @@ function clearCalculation () {
     lastOperationScreen.textContent = '';
     firstNumber = '';
     secondNumber = '';
+    currentOperator = '';
 }
 
 function defaultZero() {
@@ -79,12 +84,7 @@ function deleteLastNumber() {
     currentOperationScreen.textContent = currentOperationScreen.textContent.slice(0, -1);
     if (currentOperation === '') return currentOperationScreen.textContent = 0;
     }
-
-// function deleteLastNumber() {
-//     if (currentOperationScreen.textContent === '' || currentOperationScreen.textContent === '0') return defaultZero();
-//     currentOperationScreen.textContent = currentOperationScreen.textContent.slice(0, -1);
-//     if (currentOperationScreen.textContent === '') return currentOperationScreen.textContent = 0;
-//     }
+//change above function, not working correctly anymore due to change in other code
 
 function add (a,b) {
 return a + b;
