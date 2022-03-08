@@ -21,6 +21,8 @@ equalsButton.addEventListener('click', calculateResult);
 pointButton.addEventListener('click', addPoint);
 window.addEventListener('keydown', keyboardInput)
 
+//another option is to add a data attribute to each button, so click event listeners and keydown event listeners can be treated the same
+
 //below function takes the event.target.id and uses this value (string) to update the current operation
 function convertNumber(e) {
     updateCurrentOperation(Number(e.target.id));
@@ -38,6 +40,7 @@ function keyboardInput (e) {
     if(e.key === 'Backspace') deleteLastNumber();
     if(e.key === 'Escape') clearCalculation();
     if(e.key === '+' || e.key === '-' || e.key === '*') assignOperator(e.key);
+    if(e.key === '/') assignOperator('÷')
     console.log(`Current key: ${e.key}`);
 }
 
@@ -66,9 +69,9 @@ function calculateResult() {
         return;
     }
     secondNumber = Number(currentOperationScreen.textContent);
-    let finalResult = roundNumber(operate(currentOperator, firstNumber, secondNumber));
-    currentOperationScreen.textContent = finalResult;
+    currentOperationScreen.textContent = roundNumber(operate(currentOperator, firstNumber, secondNumber));
     lastOperationScreen.textContent = `${firstNumber}` + ' ' + currentOperator + ' ' + `${secondNumber}`;
+    resetScreen = true;
 }
 
 function removeZero() {
