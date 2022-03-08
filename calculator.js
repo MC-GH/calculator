@@ -9,32 +9,52 @@ const currentOperationScreen = document.getElementById('currentOperation');
 const numberButtons = document.querySelectorAll('.button.number');
 const operatorButtons = document.querySelectorAll('.button.operator');
 const equalsButton = document.getElementById('=');
-const pointButton = document.getElementById('0');
+const pointButton = document.getElementById('.');
 const clearButton = document.getElementById('clearButton');
 const deleteButton = document.getElementById('deleteButton');
 
 clearButton.addEventListener('click', clearCalculation);
 deleteButton.addEventListener('click', deleteLastNumber);
-numberButtons.forEach(button => button.addEventListener('click', updateCurrentOperation));
-operatorButtons.forEach(button => button.addEventListener('click', assignOperator));
+numberButtons.forEach(button => button.addEventListener('click', convertNumber));
+operatorButtons.forEach(button => button.addEventListener('click', convertOperator));
 equalsButton.addEventListener('click', calculateResult);
+pointButton.addEventListener('click', addPoint);
+window.addEventListener('keydown', keyboardInput)
+
+//below function takes the event.target.id and uses this value (string) to update the current operation
+function convertNumber(e) {
+    updateCurrentOperation(Number(e.target.id));
+}
+
+//below function takes the event.target.id of the click event listener and uses this value as input for the assignOperator function
+function convertOperator(e) {
+    assignOperator(e.target.id);
+}
+
+function keyboardInput (e) {
+    if(e.key >= 0 && e.key <= 9)  updateCurrentOperation(e.key);
+    if(e.key === '.') addPoint();
+    if(e.key === 'Enter') calculateResult();
+    if(e.key === 'Backspace') deleteLastNumber();
+    if(e.key === 'Escape') clearCalculation();
+    if(e.key === '+' || e.key === '-' || e.key === '*') assignOperator(e.key);
+    console.log(`Current key: ${e.key}`);
+}
 
 
-
-function updateCurrentOperation(e) {
+function updateCurrentOperation(number) {
     if (lastOperationScreen.textContent === '0' || resetScreen === true) removeZero();
     if (currentOperationScreen.textContent === '0') { 
         removeZero();
     }
     resetScreen = false;
-    currentOperationScreen.textContent += e.target.id;
-    console.log(e.target.id);
+    currentOperationScreen.textContent += number;
 }
 
-function assignOperator(e) {
+function assignOperator(operator) {
     if(currentOperator !== '') calculateResult();
-    firstNumber = currentOperationScreen.textContent;
-    currentOperator = e.target.id;
+    firstNumber = Number(currentOperationScreen.textContent);
+    currentOperator = operator;
     lastOperationScreen.textContent = `${firstNumber} ${currentOperator}`;
     resetScreen = true;
     }
@@ -45,10 +65,10 @@ function calculateResult() {
         currentOperationScreen.textContent = 'Error. Unable to divide by 0.';
         return;
     }
-    secondNumber = currentOperationScreen.textContent;
-    let finalResult = roundNumber(operate(currentOperator, parseInt(firstNumber), parseInt(secondNumber)));
+    secondNumber = Number(currentOperationScreen.textContent);
+    let finalResult = roundNumber(operate(currentOperator, firstNumber, secondNumber));
     currentOperationScreen.textContent = finalResult;
-    lastOperationScreen.textContent = parseInt(`${firstNumber}`) + ' ' + currentOperator + ' ' + parseInt(`${secondNumber}`);
+    lastOperationScreen.textContent = `${firstNumber}` + ' ' + currentOperator + ' ' + `${secondNumber}`;
 }
 
 function removeZero() {
@@ -70,6 +90,12 @@ function defaultZero() {
 
 function deleteLastNumber() {
     currentOperationScreen.textContent = currentOperationScreen.textContent.slice(0, -1);
+}
+
+function addPoint() {
+    if (currentOperationScreen.textContent === '') defaultZero();
+    if (currentOperationScreen.textContent.includes('.')) return;
+    currentOperationScreen.textContent += '.';
 }
 
 //if 1 character = display 0;
@@ -107,7 +133,6 @@ function operate (operator, a, b) {
         case '*':
             return multiply(a,b);
         case '÷':
-            // if (b === 0) return "Error";
             return divide(a,b);
     }
 }
