@@ -1,6 +1,7 @@
 let firstNumber = '';
 let secondNumber = '';
 let currentOperator = '';
+let resetScreen = false;
 
 //select all html elements
 const lastOperationScreen = document.getElementById('lastOperation');
@@ -16,49 +17,38 @@ clearButton.addEventListener('click', clearCalculation);
 deleteButton.addEventListener('click', deleteLastNumber);
 numberButtons.forEach(button => button.addEventListener('click', updateCurrentOperation));
 operatorButtons.forEach(button => button.addEventListener('click', assignOperator));
-equalsButton.addEventListener('click', calculateFinalResult);
+equalsButton.addEventListener('click', calculateResult);
 
 
 
 function updateCurrentOperation(e) {
+    if (lastOperationScreen.textContent === '0' || resetScreen === true) removeZero();
     if (currentOperationScreen.textContent === '0') { 
         removeZero();
     }
+    resetScreen = false;
     currentOperationScreen.textContent += e.target.id;
     console.log(e.target.id);
 }
 
 function assignOperator(e) {
-    if(lastOperationScreen.textContent !== '') {
-        secondNumber = currentOperationScreen.textContent;
-        let result = operate(currentOperator, parseInt(firstNumber), parseInt(secondNumber));
-        firstNumber = result;
-        currentOperator = e.target.id;
-        lastOperationScreen.textContent = `${result}` + ' ' + `${currentOperator}`;
-        console.log(`operator: ${currentOperator}`);
-        console.log(`result: ${result}`);
-        console.log(`current operator: ${currentOperator}`);
-        defaultZero();
-        } else {
-        firstNumber = currentOperationScreen.textContent;
-        currentOperator = e.target.id;
-        lastOperationScreen.textContent = firstNumber + ' ' + currentOperator;
-        defaultZero();  
+    if(currentOperator !== '') calculateResult();
+    firstNumber = currentOperationScreen.textContent;
+    currentOperator = e.target.id;
+    lastOperationScreen.textContent = `${firstNumber} ${currentOperator}`;
+    resetScreen = true;
     }
-    console.log(`New secondNumber: ${secondNumber}`);
 
-      }
-
-function calculateFinalResult() {
-        if (lastOperationScreen.textContent === '') {
-        lastOperationScreen.textContent = currentOperationScreen.textContent;
-        console.log(firstNumber);
-        } else {
-        secondNumber = currentOperationScreen.textContent;
-        let finalResult = operate(currentOperator, firstNumber, secondNumber);
-        currentOperationScreen.textContent = finalResult;
-        lastOperationScreen.textContent = parseInt(`${firstNumber}`) + ' ' + currentOperator + ' ' + parseInt(`${secondNumber}`);
+function calculateResult() {
+    if (currentOperator === '' || resetScreen) return;
+    if (currentOperator === '÷' && currentOperationScreen.textContent === '0') {
+        currentOperationScreen.textContent = 'Error. Unable to divide by 0.';
+        return;
     }
+    secondNumber = currentOperationScreen.textContent;
+    let finalResult = roundNumber(operate(currentOperator, parseInt(firstNumber), parseInt(secondNumber)));
+    currentOperationScreen.textContent = finalResult;
+    lastOperationScreen.textContent = parseInt(`${firstNumber}`) + ' ' + currentOperator + ' ' + parseInt(`${secondNumber}`);
 }
 
 function removeZero() {
@@ -71,20 +61,26 @@ function clearCalculation () {
     firstNumber = '';
     secondNumber = '';
     currentOperator = '';
+    resetScreen = false;
 }
 
 function defaultZero() {
     currentOperationScreen.textContent = 0;
 } 
 
-let currentOperation = currentOperationScreen.textContent;
-
 function deleteLastNumber() {
-    if (currentOperation === '' || currentOperation === '0') return defaultZero();
     currentOperationScreen.textContent = currentOperationScreen.textContent.slice(0, -1);
-    if (currentOperation === '') return currentOperationScreen.textContent = 0;
-    }
+}
+
+//if 1 character = display 0;
+    if (currentOperationScreen.textContent === '') () => defaultZero();
+
 //change above function, not working correctly anymore due to change in other code
+
+function roundNumber (number) {
+    let roundedNumber = Math.round(number * 1000) / 1000;
+    return roundedNumber;
+}
 
 function add (a,b) {
 return a + b;
