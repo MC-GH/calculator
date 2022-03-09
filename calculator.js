@@ -3,6 +3,7 @@ let secondNumber = '';
 let currentOperator = '';
 let resetScreen = false;
 
+
 //select all html elements
 const lastOperationScreen = document.getElementById('lastOperation');
 const currentOperationScreen = document.getElementById('currentOperation');

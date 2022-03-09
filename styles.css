@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Goldman&family=Press+Start+2P&display=swap');
+
+
 html, body, main {
     /* box-sizing: border-box; */
     margin: 0;
@@ -10,62 +14,91 @@ main {
     display: flex;
     align-items: center;
     justify-content: center;
+    background: linear-gradient(#bfdbf7, #e1e5f2);
 }
 #calculator {
-    border: black 1px solid;
-    width:100%;
-    width: 450px;
-    max-height: 600px;
+    box-sizing: borde-box;
+    border: black 5px solid;
+    border-radius: 2%;
+    min-width: 200px;
+    max-width: 350px;
+    max-height: auto;
     display:flex;
     flex-direction: column;
+    font-family: 'Goldman', sans-serif;
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
 }
 
 #calculatorScreen {
-    border: red 1px solid;
-    height: 100px;
+    background-color: #805e73;
+    min-height: 100px;
     display:flex;
     flex-direction: column;
     justify-content: space-around;
+    flex:1;
+    flex-wrap: wrap;
+    border: 2px black outset;
+    /* overflow: hidden; */
 }
 
 
 #lastOperation, #currentOperation {
     text-align:right;
+    margin-top: 20px;
     margin-right: 20px;
+    font-size:1.5vmax;
+    color: white;
+    flex:1;
+    overflow: visible;
 }
 
 #buttonContainer {
-    border: orange 1px solid;
     flex:1;
 }
 
 #topButtons {
     display: flex;
     justify-content: space-around;
-    padding: 10px;
     background-color: lightgrey;
-    border: 1px solid blue;
 }
 
 #clearButton, #deleteButton {
-    border: 2px black solid;
     padding: 15px;
+    flex:1;
+    font-family: 'Goldman', sans-serif;
+    font-size: 1vmax;
+    background-color: #ACC8E5;
+    border: 2px black outset;
 }
 
 #lowerButtons {
     display: flex;
     flex-wrap: wrap;
-    gap: 15px;
-    justify-content :space-evenly;
-    border: 1px pink solid;
-    padding: 20px;
 }
 
 .button {
     box-sizing: border-box;
-    width: 80px;
-    border: 2px solid black;
-    font-weight: 999;
+    background-color: #b5b1b2;
+    width: 25%;
+    height: 25%;
+    font-weight:900;
     text-align: center;
-    padding: 20px;
+    padding: 15px;
+    font-family: 'Goldman', sans-serif;
+    font-size: 1.5vmax;
+    border: 2px black outset;
+
+}
+
+.operator {
+    box-sizing: border-box;
+    background-color: #ACC8E5;
+    /* border: 2px black solid; */
+    /* border-right: none; */
+    box-shadow: none;
+    border: 2px black outset;
+}
+
+.operator:hover {
+    background-color: #1f7a8c;
 }
