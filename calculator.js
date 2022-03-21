@@ -1,10 +1,11 @@
+//global variable declaration
 let firstNumber = '';
 let secondNumber = '';
 let currentOperator = '';
 let resetScreen = false;
 
 
-//select all html elements
+//selecting html elements
 const lastOperationScreen = document.getElementById('lastOperation');
 const currentOperationScreen = document.getElementById('currentOperation');
 const numberButtons = document.querySelectorAll('.button.number');
@@ -14,6 +15,7 @@ const pointButton = document.getElementById('.');
 const clearButton = document.getElementById('clearButton');
 const deleteButton = document.getElementById('deleteButton');
 
+//adding event listeners
 clearButton.addEventListener('click', clearCalculation);
 deleteButton.addEventListener('click', deleteLastNumber);
 numberButtons.forEach(button => button.addEventListener('click', convertNumber));
@@ -21,8 +23,6 @@ operatorButtons.forEach(button => button.addEventListener('click', convertOperat
 equalsButton.addEventListener('click', calculateResult);
 pointButton.addEventListener('click', addPoint);
 window.addEventListener('keydown', keyboardInput)
-
-//another option is to add a data attribute to each button, so click event listeners and keydown event listeners can be treated the same
 
 //below function takes the event.target.id and uses this value (string) to update the current operation
 function convertNumber(e) {
