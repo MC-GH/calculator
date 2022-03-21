@@ -1,6 +1,6 @@
 # Calculator
 
-Calculator project using HTML, CSS and JavaScript
+Calculator project using HTML, CSS and JavaScript.
 
 <p align="center">
 <img align="center" src="https://github.com/MC-GH/calculator/blob/main/img/PreviewImage.PNG" alt="PreviewImage">
@@ -17,4 +17,5 @@ Calculator project using HTML, CSS and JavaScript
    - Backspace deletes 1 character at a time of the current operation screen
 
 ## Styling
-- CSS Flexbox was used to alter the size of elements depending on the viewport
+
+CSS Flexbox was used to alter the size of elements depending on the viewport.
