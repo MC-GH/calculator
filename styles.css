@@ -1,9 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Goldman&family=Press+Start+2P&display=swap');
 
-
 html, body, main {
-    /* box-sizing: border-box; */
     margin: 0;
     padding: 0;
 }
@@ -16,7 +13,6 @@ body {
     align-items: center;
     justify-content: space-between;
     background: linear-gradient(#bfdbf7, #e1e5f2);
-
 }
 
 main {
@@ -29,8 +25,6 @@ main {
 
 #calculator {
     box-sizing: border-box;
-    border: black 5px solid;
-    border-radius: 2%;
     min-width: 200px;
     max-width: 350px;
     max-height: auto;
@@ -43,7 +37,6 @@ main {
 }
 
 #calculatorScreen {
-    background-color: #f0fbff;
     min-height: 100px;
     display:flex;
     flex-direction: column;
@@ -69,14 +62,9 @@ main {
     text-shadow:rgb(126, 203, 244) 3px 3px;
 }
 
-#buttonContainer {
-    flex:1;
-}
-
 #topButtons {
     display: flex;
-    justify-content: space-around;
-    background-color: lightgrey;
+    flex:1;
 }
 
 #clearButton, #deleteButton {
@@ -113,28 +101,24 @@ main {
     opacity: 1;
 }
 
-
 .operator {
     box-sizing: border-box;
-    background-color: #9ba6a5;
-    box-shadow: none;
     background: radial-gradient(465px at -15.1% -25%, rgb(17, 130, 193) 0%, rgb(67, 166, 238) 49%, rgb(126, 203, 244) 90.2%);
     opacity: 1;
 }
+
 .operator:hover, .button:hover {
     opacity:.7;
 }
 
 footer {
     display:flex;
-    height: auto;
     justify-content: center;
     width: 100vw;
     margin-bottom: 2vmax;
     align-items: center;
     font-family: 'Goldman', sans-serif;
     font-size: 20px;
-    color: #5f2cdc;
 }
 
 a {
@@ -145,12 +129,10 @@ a {
 
 a:hover {
     opacity: .5;
-    
 }
 
 img {
     margin-bottom: -5px;
     margin-right: 10px;
-    color: #5f2cdc;
     transform: scale(1.3);
 }

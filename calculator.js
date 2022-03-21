@@ -4,7 +4,6 @@ let secondNumber = '';
 let currentOperator = '';
 let resetScreen = false;
 
-
 //selecting html elements
 const lastOperationScreen = document.getElementById('lastOperation');
 const currentOperationScreen = document.getElementById('currentOperation');
@@ -34,6 +33,7 @@ function convertOperator(e) {
     assignOperator(e.target.id);
 }
 
+//below function takes the keyboard input event and assigns an action to each button
 function keyboardInput (e) {
     if(e.key >= 0 && e.key <= 9)  updateCurrentOperation(e.key);
     if(e.key === '.') addPoint();
@@ -45,7 +45,7 @@ function keyboardInput (e) {
     console.log(`Current key: ${e.key}`);
 }
 
-
+//below function updates the current operation screen. Standard it displays a 0, which gets removed when entering digits
 function updateCurrentOperation(number) {
     if (lastOperationScreen.textContent === '0' || resetScreen === true) removeZero();
     if (currentOperationScreen.textContent === '0') { 
@@ -55,6 +55,9 @@ function updateCurrentOperation(number) {
     currentOperationScreen.textContent += number;
 }
 
+//when an operator is triggered, it stores the first number and operator in a variable
+//the first number and operator are displayed in the upper screen zone
+//if the firstNumber variable is already holding a value, a temporary result is calculated and displayed in the upper and lower screen zone
 function assignOperator(operator) {
     if(currentOperator !== '') calculateResult();
     firstNumber = Number(currentOperationScreen.textContent);
@@ -63,6 +66,7 @@ function assignOperator(operator) {
     resetScreen = true;
     }
 
+//when the equals button is pressed, the last entered number is stored in the second number variable, and the operation is performed
 function calculateResult() {
     if (currentOperator === '' || resetScreen) return;
     if (currentOperator === '÷' && currentOperationScreen.textContent === '0') {
@@ -75,10 +79,12 @@ function calculateResult() {
     resetScreen = true;
 }
 
+//resets bottom zone of the calculator screen
 function removeZero() {
     currentOperationScreen.textContent = '';
 }
 
+//resets variables and calculator screen, ready for a new calculation from scratch
 function clearCalculation () {
     currentOperationScreen.textContent = '0';
     lastOperationScreen.textContent = '';
@@ -89,24 +95,22 @@ function clearCalculation () {
 }
 
 function defaultZero() {
-    currentOperationScreen.textContent = 0;
+    currentOperationScreen.textContent = '0';
 } 
 
+//deletes one digit at a time of the lastly entered number
 function deleteLastNumber() {
     currentOperationScreen.textContent = currentOperationScreen.textContent.slice(0, -1);
 }
 
+//below function adds a point if no point is already entered
 function addPoint() {
     if (currentOperationScreen.textContent === '') defaultZero();
     if (currentOperationScreen.textContent.includes('.')) return;
     currentOperationScreen.textContent += '.';
 }
 
-//if 1 character = display 0;
-    if (currentOperationScreen.textContent === '') () => defaultZero();
-
-//change above function, not working correctly anymore due to change in other code
-
+//round the number 3 digits after point
 function roundNumber (number) {
     let roundedNumber = Math.round(number * 1000) / 1000;
     return roundedNumber;
@@ -128,6 +132,7 @@ function divide (a,b) {
     return a / b;
 }
 
+//performs the actual operation
 function operate (operator, a, b) {
     switch(operator) {
         case '+':
