@@ -13,5 +13,8 @@ Calculator project using HTML, CSS and JavaScript
 - Multiple operations can be chained
 - Result is rounded to 3 digits after .
  - Keyboard input is supported:
-   - Escape resets the calculation.
-   - Backspace deletes 1 character at a time of the current operation screen.
+   - Escape resets the calculation
+   - Backspace deletes 1 character at a time of the current operation screen
+
+## Styling
+- CSS Flexbox was used to alter the size of elements depending on the viewport
