@@ -12,6 +12,7 @@ calculator project using HTML, CSS and JavaScript
 - Screen displays the last operation that was performed
 - Multiple operations can be chained
 - Result is rounded to 3 digits after .
+-  test
  - Keyboard input is supported:
   - Escape resets the calculation.
   - Backspace deletes 1 character at a time of the current operation screen.
